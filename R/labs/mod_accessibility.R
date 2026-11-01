@@ -126,7 +126,7 @@ accessibility_server <- function(id) {
         tags$ul(class = "check-list", lapply(seq_along(barrier_items), function(i) tags$li(class = if (right[i]) "ok" else "todo", barrier_items[[i]]$why))))
     })
 
-    output$export_notes <- notes_handler(tr("Accessibility", "Accesibilidad"), input, function() {
+    reflect_server(tr("Accessibility", "Accesibilidad"), input, output, session, function() {
       if (!valid()) return(tr("(no valid colour pair)", "(sin pareja de colores válida)"))
       sprintf(tr("Text %s on %s at %spt: contrast %s", "Texto %s sobre %s a %s pt: contraste %s"), toupper(input$fg), toupper(input$bg), input$size, fmt_ratio(ratio()))
     })

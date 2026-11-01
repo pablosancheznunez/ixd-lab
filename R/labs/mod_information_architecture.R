@@ -94,7 +94,7 @@ information_architecture_server <- function(id) {
                                    tr(". Was that a deliberate choice?", ". ¿Fue una decisión deliberada?")))
     })
 
-    output$export_notes <- notes_handler(tr("Information architecture", "Arquitectura de la información"), input, function() {
+    reflect_server(tr("Information architecture", "Arquitectura de la información"), input, output, session, function() {
       x <- placed()
       if (!nrow(x)) return(tr("(no cards placed)", "(sin tarjetas colocadas)"))
       groups <- split(x$card, x$category)

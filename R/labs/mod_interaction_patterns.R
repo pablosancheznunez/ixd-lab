@@ -115,7 +115,7 @@ interaction_patterns_server <- function(id) {
         tags$ul(class = "check-list", lapply(seq_along(pattern_quiz), function(i) tags$li(class = if (right[i]) "ok" else "todo", pattern_quiz[[i]]$why))))
     })
 
-    output$export_notes <- notes_handler(tr("Interaction patterns", "Patrones de interacción"), input, function() {
+    reflect_server(tr("Interaction patterns", "Patrones de interacción"), input, output, session, function() {
       vapply(pattern_quiz, function(q) {
         chosen <- names(pattern_choices)[pattern_choices == (input[[q$id]] %||% "")]
         paste0(q$situation, " → ", if (length(chosen) && nzchar(input[[q$id]])) chosen else tr("(not answered)", "(sin responder)"))

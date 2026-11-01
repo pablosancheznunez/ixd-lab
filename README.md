@@ -6,7 +6,7 @@
 
 **Use it online: <https://pablosancheznunez.com/ixd-lab/> · En español: <https://pablosancheznunez.com/ixd-lab/es/>**
 
-IxD Lab is an open, modular learning studio built with R Shiny. It is an open educational resource (OER): free to use, adapt, and share. AI-supported activities and an opt-in research mode for collecting interaction data are in development (see [ROADMAP.md](ROADMAP.md)). Version 0.1.0 includes six complete labs. It does not yet use an AI provider, create accounts, or collect participant data. Simulated content is labelled as such, and activities are formative examples, not validated assessment instruments.
+IxD Lab is an open, modular learning studio built with R Shiny. It is an open educational resource (OER): free to use, adapt, and share. Every lab offers optional AI feedback from Claude, using your own Anthropic API key; an opt-in research mode for collecting interaction data is in development (see [ROADMAP.md](ROADMAP.md)). IxD Lab does not create accounts or collect participant data. Simulated content is labelled as such, and activities are formative examples, not validated assessment instruments.
 
 ## Labs
 
@@ -19,13 +19,22 @@ IxD Lab is an open, modular learning studio built with R Shiny. It is an open ed
 | Interaction patterns | Save, delete-with-undo and validation patterns, plus a pattern-choice exercise | Ready for class |
 | User behaviour | Three simulated traces on a timeline, observation vs explanation, research methods | Ready for class; not human data |
 
-All labs include learning objectives, a key idea, an experiment, and a reflection with downloadable notes. AI integration and the opt-in research mode are planned for versions 0.3 and 0.4; this release has no AI provider, user account, cookies, analytics, or data collection.
+All labs include learning objectives, a key idea, an experiment, and a reflection with downloadable notes. There are no user accounts, cookies, analytics, or data collection.
+
+## AI feedback (optional)
+
+In every lab, **✦ Get AI feedback** asks Claude (Anthropic) for 3 to 5 formative points on the activity and the learner's reflection, in the interface language. To turn it on, open **✦ AI** in the menu and paste an Anthropic API key from <https://console.anthropic.com/settings/keys>; usage is billed to that key's account.
+
+- The key stays in the browser (session storage, or local storage if you tick "Remember on this device"). It is never sent to the Shiny server or to the author.
+- The request goes directly from the browser to the Claude API (`www/ai.js`, model `claude-opus-5-5`). Only the lab's activity summary and reflection are sent, and only when the learner asks.
+- Responses are labelled as AI-generated. Without a key, every lab works as before.
+- Because the key is held by each user, this suits teachers, demos and self-study. For a whole class without individual keys, see version 0.3 in the roadmap.
 
 ## How it runs
 
 The app runs entirely in the visitor's browser with [Shinylive](https://posit-dev.github.io/r-shinylive/) (R compiled to WebAssembly), so it needs no R server. The interface is available in English and Spanish: every text is written once with `tr("English", "Español")`, and the language is chosen when the site is built. To run the Spanish version locally, create a file `lang.txt` containing `es` in the project directory.
 
-To publish a new version, run `source("publish.R")` from the project directory: it builds both languages, adds the loading message and sharing preview, and pushes the static site to the `gh-pages` branch, which GitHub Pages serves at <https://pablosancheznunez.com/ixd-lab/>. Set the environment variable `IXD_DRY_RUN=1` to build without publishing. No external fonts, trackers, or third-party services are loaded.
+To publish a new version, run `source("publish.R")` from the project directory: it builds both languages, adds the loading message and sharing preview, and pushes the static site to the `gh-pages` branch, which GitHub Pages serves at <https://pablosancheznunez.com/ixd-lab/>. Set the environment variable `IXD_DRY_RUN=1` to build without publishing. No external fonts, trackers, or third-party services are loaded; the only outside call is to the Claude API, and only when a user turns on AI feedback with their own key.
 
 ## Run locally
 

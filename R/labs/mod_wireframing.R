@@ -109,6 +109,6 @@ wireframing_server <- function(id) {
     }
     output$export <- downloadHandler(filename = function() "ixd-wireframe.txt",
       content = function(file) writeLines(enc2utf8(c(tr("IxD Lab · Wireframing sketch", "IxD Lab · Boceto de wireframing"), "", sketch_lines())), file, useBytes = TRUE))
-    output$export_notes <- notes_handler("Wireframing", input, sketch_lines)
+    reflect_server("Wireframing", input, output, session, sketch_lines)
   })
 }

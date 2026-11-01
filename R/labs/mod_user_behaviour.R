@@ -83,7 +83,7 @@ user_behaviour_server <- function(id) {
       div(class = "alert alert-info mt-2", tags$ul(class = "mb-0", lapply(notes, tags$li)))
     })
 
-    output$export_notes <- notes_handler(tr("User behaviour", "Comportamiento del usuario"), input, function() c(
+    reflect_server(tr("User behaviour", "Comportamiento del usuario"), input, output, session, function() c(
       paste(tr("Scenario (simulated):", "Escenario (simulado):"), behaviour_traces[[input$scenario]]$title),
       paste(tr("Observation:", "Observación:"), trimws(input$observation %||% "")),
       paste(tr("Explanations:", "Explicaciones:"), trimws(input$explanation %||% "")),

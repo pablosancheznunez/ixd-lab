@@ -116,6 +116,6 @@ usability_server <- function(id) {
     }
     output$export <- downloadHandler(filename = function() "ixd-usability-findings.txt",
       content = function(file) writeLines(enc2utf8(c(tr("IxD Lab · Heuristic evaluation findings", "IxD Lab · Hallazgos de la evaluación heurística"), format(Sys.Date()), "", report())), file, useBytes = TRUE))
-    output$export_notes <- notes_handler(tr("Usability", "Usabilidad"), input, report)
+    reflect_server(tr("Usability", "Usabilidad"), input, output, session, report)
   })
 }

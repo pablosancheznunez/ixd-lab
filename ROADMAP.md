@@ -7,7 +7,8 @@ IxD Lab aims to be an AI-powered learning and experimentation environment for in
 - Shared editorial identity, navigation, and modular structure for all six labs.
 - A complete, class-ready activity per lab with formative feedback and downloadable notes.
 - Runs in the browser with Shinylive, published on GitHub Pages at pablosancheznunez.com/ixd-lab, in English and Spanish.
-- No accounts, telemetry, AI provider, or participant data collection yet.
+- Optional AI feedback in every lab with Claude and the visitor's own Anthropic API key, sent directly from the browser.
+- No accounts, telemetry, or participant data collection.
 
 ## 0.2 · Teaching-ready foundations
 
@@ -18,7 +19,7 @@ IxD Lab aims to be an AI-powered learning and experimentation environment for in
 
 ## 0.3 · AI-supported learning
 
-- Add an AI provider layer (for example, the Claude API). Shinylive runs in the browser and cannot keep an API key secret, so AI calls need a small server-side proxy or a hosted Shiny server.
+- Done in 0.1: formative AI feedback with each user's own key. Next: a small server-side proxy with the teacher's key and usage limits, so a whole class can use it without individual keys (Shinylive alone cannot keep a key secret).
 - Formative AI feedback on learner work: usability notes, wireframe critiques, sitemap labels, and reflection answers.
 - AI-generated scenarios, personas, and synthetic traces for experimentation, labelled as AI-generated at point of use.
 - Tell learners before any of their text is sent to an AI provider; keep every lab usable without AI.

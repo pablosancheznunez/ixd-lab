@@ -41,6 +41,10 @@ goto_link <- function(target, ..., class = NULL) {
 }
 
 # Link to the same app in the other language; target _top leaves the Shinylive frame.
+ai_switch <- tags$a(class = "nav-link ai-switch", href = "#", `data-bs-toggle` = "modal", `data-bs-target` = "#ai-settings",
+  title = tr("AI feedback settings", "Ajustes del feedback con IA"),
+  span(class = "ai-dot", `aria-hidden` = "true"), tr("✦ AI", "✦ IA"))
+
 lang_switch <- tags$a(class = "nav-link lang-switch", target = "_top",
   href = if (LANG == "es") app_url[["en"]] else app_url[["es"]],
   hreflang = if (LANG == "es") "en" else "es",
@@ -95,8 +99,8 @@ home_page <- div(class = "container",
     layout_columns(col_widths = c(6, 6),
       p(tr("Each lab works as a 15-minute studio activity. Ask learners to keep three columns in their notes: what I changed, what I expected, and what I would need to test. Learners can download their notes at the end of each lab to share or submit.",
            "Cada lab funciona como una actividad de taller de 15 minutos. Pide al alumnado que lleve tres columnas en sus notas: qué cambié, qué esperaba y qué necesitaría comprobar. Al final de cada lab pueden descargar sus notas para compartirlas o entregarlas.")),
-      p(tr("Feedback in the labs is formative, not a grade. Nothing learners write leaves their browser in this version. AI-supported feedback and an opt-in research mode are in development; see the ",
-           "El feedback de los labs es formativo, no una nota. En esta versión nada de lo que escribe el alumnado sale de su navegador. El feedback con IA y un modo de investigación voluntario están en desarrollo; consulta la "),
+      p(tr("Feedback in the labs is formative, not a grade. Optional AI feedback works with your own Anthropic API key (✦ AI in the menu); without it, nothing learners write leaves their browser. An opt-in research mode is in development; see the ",
+           "El feedback de los labs es formativo, no una nota. El feedback con IA es opcional y funciona con tu propia clave de API de Anthropic (✦ IA en el menú); sin ella, nada de lo que escribe el alumnado sale de su navegador. Un modo de investigación voluntario está en desarrollo; consulta la "),
         ext_link(paste0(repo_url, "/blob/main/ROADMAP.md"), tr("roadmap", "hoja de ruta")), ".")))
 )
 
@@ -109,11 +113,11 @@ about_page <- div(class = "container hero",
   p(tr("Learn introduces concepts and guided questions. Experiment offers small, interactive design tasks. Research is an opt-in mode in development: with informed consent, it will record anonymised interaction data to study how people learn interaction design. This version does not store participant data yet and reports no empirical findings.",
        "Aprende presenta conceptos y preguntas guiadas. Experimenta ofrece pequeñas tareas interactivas de diseño. Investiga es un modo voluntario en desarrollo: con consentimiento informado, registrará datos de interacción anonimizados para estudiar cómo se aprende diseño de interacción. Esta versión todavía no guarda datos de participantes ni presenta resultados empíricos.")),
   h3(tr("AI and evidence", "IA y evidencia")),
-  p(tr("AI-supported activities are in development: formative feedback on learner work and generated scenarios to experiment with. AI output will always be labelled, and learner text will only be sent to an AI provider when this is explained beforehand. Any research with people will require their informed consent and follow the GDPR.",
-       "Las actividades con IA están en desarrollo: feedback formativo sobre el trabajo del alumnado y escenarios generados para experimentar. Lo que produzca la IA siempre estará señalado, y los textos del alumnado solo se enviarán a un proveedor de IA si se explica antes. Cualquier investigación con personas requerirá su consentimiento informado y cumplirá el RGPD.")),
+  p(tr("Every lab can ask Claude, an AI model by Anthropic, for formative feedback on the learner's work and reflection. It is optional and uses your own Anthropic API key, which stays in your browser (✦ AI in the menu). AI output is always labelled, and nothing is sent until you ask for feedback. AI-generated scenarios are in development. Any research with people will require their informed consent and follow the GDPR.",
+       "Cada lab puede pedir a Claude, un modelo de IA de Anthropic, feedback formativo sobre el trabajo y la reflexión del alumnado. Es opcional y usa tu propia clave de API de Anthropic, que se queda en tu navegador (✦ IA en el menú). Lo que produce la IA siempre está señalado, y no se envía nada hasta que pides feedback. Los escenarios generados con IA están en desarrollo. Cualquier investigación con personas requerirá su consentimiento informado y cumplirá el RGPD.")),
   h3(tr("Privacy in this version", "Privacidad en esta versión")),
-  p(tr("The app runs entirely in your browser. There are no accounts, cookies, analytics, or AI calls, and your notes disappear when you close the page unless you download them.",
-       "La app funciona por completo en tu navegador. No hay cuentas, cookies, analítica ni llamadas a IA, y tus notas desaparecen al cerrar la página salvo que las descargues.")),
+  p(tr("The app runs entirely in your browser. There are no accounts, cookies, or analytics, and your notes disappear when you close the page unless you download them. If you turn on AI feedback, the activity summary and your notes for that lab go directly from your browser to Anthropic when you ask for feedback, and nowhere else.",
+       "La app funciona por completo en tu navegador. No hay cuentas, cookies ni analítica, y tus notas desaparecen al cerrar la página salvo que las descargues. Si activas el feedback con IA, el resumen de la actividad y tus notas de ese lab van directamente de tu navegador a Anthropic cuando pides feedback, y a ningún otro sitio.")),
   h3(tr("Open educational resource", "Recurso educativo abierto")),
   p(tr("IxD Lab is an open educational resource (OER): you may keep, reuse, adapt, remix, and share it, in your own courses or for self-study, with attribution.",
        "IxD Lab es un recurso educativo abierto (REA): puedes conservarlo, reutilizarlo, adaptarlo, mezclarlo y compartirlo, en tus cursos o para estudiar por tu cuenta, citando la autoría.")),
@@ -135,7 +139,7 @@ footer <- tags$footer(class = "site-footer",
   div(class = "container d-flex flex-wrap justify-content-between gap-3 footnote",
     span(tr("IxD Lab 0.1 · © 2026 Pablo Sánchez-Núñez · Open educational resource. Content ", "IxD Lab 0.1 · © 2026 Pablo Sánchez-Núñez · Recurso educativo abierto. Contenido "),
          ext_link(cc_by_url, rel = "license", "CC BY 4.0"),
-         tr(", code MIT. No personal data are collected in this version.", ", código MIT. Esta versión no recoge datos personales.")),
+         tr(", code MIT. IxD Lab collects no personal data.", ", código MIT. IxD Lab no recoge datos personales.")),
     span(ext_link(site_url, "pablosancheznunez.com"), " · ", ext_link(orcid_url, "ORCID"), " · ", ext_link(repo_url, "GitHub"))))
 
 ui <- page_navbar(
@@ -154,12 +158,15 @@ ui <- page_navbar(
       tags$link(rel = "author", href = orcid_url)),
     tags$a(class = "skip-link", href = "#main", tr("Skip to content", "Saltar al contenido")),
     tags$link(rel = "stylesheet", href = "styles.css"),
+    tags$script(src = "ai.js"),
+    ai_settings_modal(),
     tags$script(HTML(sprintf("document.documentElement.lang = '%s';", LANG))),
     tags$script(HTML("document.addEventListener('shiny:inputchanged', function(e){ if (e.name === 'main_nav') { window.scrollTo(0, 0); var m = document.getElementById('main'); if (m) m.focus({preventScroll: true}); } });"))),
   nav_panel(tr("Home", "Inicio"), value = "home", home_page),
   !!!lapply(names(labs), function(id) nav_panel(labs[[id]]$short %||% labs[[id]]$title, value = id, lab_page(id))),
   nav_panel(tr("About", "Sobre IxD Lab"), value = "about", about_page),
   nav_spacer(),
+  nav_item(ai_switch),
   nav_item(lang_switch),
   footer = footer
 )

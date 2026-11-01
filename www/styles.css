@@ -110,3 +110,11 @@ a { color: var(--ixd-green); }
 /* Language switch */
 .lang-switch { font: 500 .8rem var(--ixd-mono); letter-spacing: .08em; border: 1px solid var(--ixd-line); border-radius: 99px; padding: .2rem .7rem !important; margin: .4rem 0; }
 .lang-switch:hover { border-color: var(--ixd-green); color: var(--ixd-green); }
+
+/* Optional AI feedback */
+.ai-switch { display: inline-flex; align-items: center; gap: .35rem; }
+.ai-dot { width: .5rem; height: .5rem; border-radius: 50%; background: #bdb9ae; }
+body.ai-on .ai-dot { background: var(--ixd-green); }
+body.ai-on .ai-off-text, body:not(.ai-on) .ai-on-text { display: none; }
+.ai-feedback { background: #f1f6f3; border-left: 3px solid var(--ixd-green); border-radius: .6rem; padding: 1rem 1.2rem; }
+.ai-feedback li { margin-bottom: .35rem; }
