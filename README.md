@@ -59,7 +59,7 @@ ixd-lab/
 ├── content/                  # Teaching notes for each activity
 ├── tests/smoke.R             # Basic checks
 ├── publish.R                 # Build with Shinylive and publish to GitHub Pages
-├── site/og-image.png         # Sharing preview image
+├── site/                     # Icons and sharing preview image for the published page
 ├── ixd-lab.Rproj             # RStudio project
 ├── CITATION.cff              # How to cite
 ├── LICENSE                   # MIT (software)
