@@ -13,7 +13,7 @@ install.packages(c("shiny", "bslib"))
 shiny::runApp("ixd-lab")
 ```
 
-Run the second line from the parent directory, or open `app.R` in RStudio and select **Run App**. Google Fonts are an optional visual enhancement; system fonts remain as fallback.
+Run the second line from the parent directory, or open `ixd-lab.Rproj` in RStudio, then open `app.R` and select **Run App**. Google Fonts are an optional visual enhancement; system fonts remain as fallback.
 
 ## Labs and current status
 
@@ -26,19 +26,20 @@ Run the second line from the parent directory, or open `app.R` in RStudio and se
 | Interaction patterns | Compare inline status notification and confirmation dialog | Starter activity |
 | User behaviour | Inspect a clearly labelled synthetic navigation trace | Starter activity; not human data |
 
-All labs include learning objectives, an experiment, and a reflection prompt. There is no AI integration, user account, telemetry, or persistent research mode in this release. Do not represent simulated examples as empirical findings.
+All labs include learning objectives, an experiment, and a reflection prompt. AI integration and the opt-in research mode are planned for versions 0.3 and 0.4; this release has no AI provider, user account, telemetry, or data collection. Do not represent simulated examples as empirical findings.
 
 ## Project structure
 
 ```text
 ixd-lab/
 ├── app.R
+├── ixd-lab.Rproj             # RStudio project
+├── deploy.R                  # Publish to shinyapps.io
 ├── R/
 │   ├── helpers.R
 │   └── labs/                 # One Shiny module per lab
 ├── tests/                    # Basic source and helper checks
 ├── content/                  # Initial teaching activity notes
-├── www/                      # Optional local CSS, scripts, and images
 ├── README.md
 ├── ROADMAP.md
 ├── RESEARCH_ETHICS.md
@@ -50,6 +51,10 @@ ixd-lab/
 
 From the project directory, run `Rscript tests/smoke.R` for basic checks. For the app, run `shiny::runApp()` and open each lab to check its interactive controls. See [ROADMAP.md](ROADMAP.md) for the staged development plan and [RESEARCH_ETHICS.md](RESEARCH_ETHICS.md) for a proposed evidence protocol. No tests or live app execution could be confirmed in the authoring environment if R is unavailable there.
 
+## Maintainer
+
+Pablo Sánchez-Núñez · psancheznunez@outlook.com · <https://github.com/pablosancheznunez/ixd-lab>
+
 ## Open source and preservation
 
-The software is licensed under the MIT License. Before a public release, replace the example maintainer contact, add repository URL and citation metadata, review accessibility with users, and configure a GitHub release with Zenodo DOI integration. Teaching content may need a separate Creative Commons license; obtain contributor agreement before publishing it.
+The software is licensed under the MIT License. Before a public release, add citation metadata, review accessibility with users, and configure a GitHub release with Zenodo DOI integration. Teaching content may need a separate Creative Commons license; obtain contributor agreement before publishing it.

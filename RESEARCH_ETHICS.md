@@ -1,6 +1,6 @@
 # Proposed educational evaluation and ethical evidence plan
 
-This prototype collects no participant data. Research mode is a future feature and must remain off until its protocol, consent flow, governance, and institutional review are in place.
+IxD Lab will include an opt-in research mode that collects interaction data and AI-supported activities (see [ROADMAP.md](ROADMAP.md)). Version 0.1 collects no participant data. Research mode must remain off until its protocol, consent flow, governance, data protection assessment, and institutional review are in place.
 
 ## Questions and measures
 
@@ -20,6 +20,14 @@ Do not treat clicks, time-on-task, synthetic traces, or AI output as evidence of
 - Set retention and deletion dates before collection; limit access to the named research team and use institution-approved storage.
 - Export only the current activity's necessary data. Show a preview and give a clear cancel path. No background telemetry.
 - Label simulated and AI-generated content in context. Do not combine it with participant data as if it were observed behaviour.
+
+## AI providers and data protection
+
+- Sending learner text to an AI provider is a transfer of personal data to a third party. Name the provider, the purpose, and what is sent in the study information and consent.
+- Send only the text needed for the feedback. Never send names, email addresses, student numbers, or research identifiers.
+- Check the provider's data retention and training terms, and prefer settings or agreements that exclude training on learner data.
+- Keep an equivalent non-AI path for every activity, so learners who decline still get the full learning experience.
+- Data collection in the EU is subject to the GDPR. Consult the university's Data Protection Officer and ethics committee before any study, and document the legal basis, retention period, and data flows.
 
 ## Reporting
 

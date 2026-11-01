@@ -2,7 +2,10 @@ Package: ixdLab
 Title: IxD Lab: An AI-Powered Learning and Experimentation Environment for Interaction Design
 Version: 0.1.0
 Authors@R: person("Pablo", "Sánchez-Núñez", role = c("aut", "cre"), email = "psancheznunez@outlook.com")
-Description: An open, modular Shiny learning environment for interaction design.
+Description: An AI-powered, modular Shiny environment for learning and experimenting
+    with interaction design, with a planned opt-in research mode.
+URL: https://github.com/pablosancheznunez/ixd-lab
+BugReports: https://github.com/pablosancheznunez/ixd-lab/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 4.1.0)
