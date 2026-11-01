@@ -2,6 +2,8 @@
 
 **An AI-Powered Learning and Experimentation Environment for Interaction Design**
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23863524.svg)](https://doi.org/10.5281/zenodo.23863524)
+
 **Use it online: <https://pablosancheznunez.com/ixd-lab/> · En español: <https://pablosancheznunez.com/ixd-lab/es/>**
 
 IxD Lab is an open, modular learning studio built with R Shiny. It is an open educational resource (OER): free to use, adapt, and share. AI-supported activities and an opt-in research mode for collecting interaction data are in development (see [ROADMAP.md](ROADMAP.md)). Version 0.1.0 includes six complete labs. It does not yet use an AI provider, create accounts, or collect participant data. Simulated content is labelled as such, and activities are formative examples, not validated assessment instruments.
@@ -81,9 +83,9 @@ IxD Lab is published as an open educational resource, in line with the [UNESCO R
 
 ## How to cite
 
-Sánchez-Núñez, P. (2026). *IxD Lab: An AI-Powered Learning and Experimentation Environment for Interaction Design* (Version 0.1.0) [Software and open educational resource]. https://pablosancheznunez.com/ixd-lab/
+Sánchez-Núñez, P. (2026). *IxD Lab: An AI-Powered Learning and Experimentation Environment for Interaction Design* (Version 0.1.0) [Software and open educational resource]. Zenodo. https://doi.org/10.5281/zenodo.23863524
 
-GitHub also offers this citation, in APA and BibTeX, from **Cite this repository** ([CITATION.cff](CITATION.cff)).
+The DOI [10.5281/zenodo.23863524](https://doi.org/10.5281/zenodo.23863524) always points to the latest version; each release also has its own DOI on Zenodo. GitHub offers this citation, in APA and BibTeX, from **Cite this repository** ([CITATION.cff](CITATION.cff)).
 
 ## Author
 

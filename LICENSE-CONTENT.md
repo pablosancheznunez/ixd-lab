@@ -29,7 +29,7 @@ https://creativecommons.org/licenses/by/4.0/
 
 Suggested attribution:
 
-Sánchez-Núñez, P. (2026). *IxD Lab: An AI-Powered Learning and Experimentation Environment for Interaction Design* (Version 0.1.0). https://pablosancheznunez.com/ixd-lab/. Licensed under CC BY 4.0.
+Sánchez-Núñez, P. (2026). *IxD Lab: An AI-Powered Learning and Experimentation Environment for Interaction Design* (Version 0.1.0). Zenodo. https://doi.org/10.5281/zenodo.23863524. Licensed under CC BY 4.0.
 
 This license applies to the educational content. The software and its source code are distributed separately under the MIT License in `LICENSE`.
 

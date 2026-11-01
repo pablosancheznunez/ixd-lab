@@ -126,7 +126,7 @@ about_page <- div(class = "container hero",
     tags$li(tags$strong(tr("Simulated data", "Datos simulados")), tr(": written for teaching; it does not represent real people.", ": escritos para la docencia; no representan a personas reales."))),
   h3(tr("How to cite", "Cómo citar")),
   p(class = "panel-soft", "Sánchez-Núñez, P. (2026). ", tags$em("IxD Lab: An AI-Powered Learning and Experimentation Environment for Interaction Design"),
-    tr(" (Version 0.1.0) [Software and open educational resource]. ", " (Versión 0.1.0) [Software y recurso educativo abierto]. "), "https://pablosancheznunez.com/ixd-lab/"),
+    tr(" (Version 0.1.0) [Software and open educational resource]. Zenodo. ", " (Versión 0.1.0) [Software y recurso educativo abierto]. Zenodo. "), ext_link("https://doi.org/10.5281/zenodo.23863524", "https://doi.org/10.5281/zenodo.23863524")),
   h3(tr("Author", "Autor")),
   p("Pablo Sánchez-Núñez · ORCID ", ext_link(orcid_url, rel = "me", "0000-0001-7845-9506"), " · ", ext_link(site_url, "pablosancheznunez.com"))
 )

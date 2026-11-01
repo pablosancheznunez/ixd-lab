@@ -12,6 +12,14 @@ authors:
 url: "https://pablosancheznunez.com/ixd-lab/"
 repository-code: "https://github.com/pablosancheznunez/ixd-lab"
 license: MIT
+doi: 10.5281/zenodo.23863524
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23863524
+    description: "Concept DOI: all versions, resolves to the latest"
+  - type: doi
+    value: 10.5281/zenodo.23863525
+    description: "Version 0.1.0"
 abstract: >-
   IxD Lab is an open educational resource for learning interaction design by
   making, testing, and reflecting. Six browser-based labs cover wireframing,
