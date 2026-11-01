@@ -1,12 +1,10 @@
-ia_cards <- c("Course overview", "Weekly readings", "Lecture recordings", "Assessment dates", "Submit assignment",
-              "Grades", "Class forum", "Contact tutor", "Office hours", "Accessibility support")
+ia_cards <- c(tr("Course overview", "Presentación del curso"), tr("Weekly readings", "Lecturas semanales"), tr("Lecture recordings", "Grabaciones de clase"),
+              tr("Assessment dates", "Fechas de evaluación"), tr("Submit assignment", "Entregar trabajo"), tr("Grades", "Calificaciones"),
+              tr("Class forum", "Foro de la clase"), tr("Contact tutor", "Contactar con el docente"), tr("Office hours", "Tutorías"),
+              tr("Accessibility support", "Apoyo a la accesibilidad"))
 
-ia_reference <- list(
-  "Learn" = c("Course overview", "Weekly readings", "Lecture recordings"),
-  "Assessment" = c("Assessment dates", "Submit assignment", "Grades"),
-  "Get help" = c("Contact tutor", "Office hours", "Accessibility support"),
-  "Community" = c("Class forum")
-)
+ia_reference <- setNames(list(ia_cards[1:3], ia_cards[4:6], ia_cards[8:10], ia_cards[7]),
+                         c(tr("Learn", "Aprender"), tr("Assessment", "Evaluación"), tr("Get help", "Ayuda"), tr("Community", "Comunidad")))
 
 # Share of card pairs grouped together in the reference that the learner also grouped together.
 ia_agreement <- function(placed) {
@@ -19,26 +17,29 @@ ia_agreement <- function(placed) {
 information_architecture_ui <- function(id) {
   ns <- NS(id)
   lab_section(ns,
-    objectives = c("Group content by meaning.", "Write labels a visitor would recognise.", "Compare your structure with another and explain the differences."),
-    concept = "Card sorting reveals how people expect content to be grouped. There is rarely one right answer; good structures use labels that match the words visitors already use.",
+    objectives = c(tr("Group content by meaning.", "Agrupar contenidos por significado."),
+                   tr("Write labels a visitor would recognise.", "Escribir etiquetas que un visitante reconozca."),
+                   tr("Compare your structure with another and explain the differences.", "Comparar tu estructura con otra y explicar las diferencias.")),
+    concept = tr("Card sorting reveals how people expect content to be grouped. There is rarely one right answer; good structures use labels that match the words visitors already use.",
+                 "La ordenación de tarjetas (card sorting) revela cómo espera la gente que se agrupen los contenidos. Rara vez hay una única respuesta correcta; las buenas estructuras usan etiquetas con las palabras que los visitantes ya emplean."),
     activity = tagList(
-      p("Challenge · Organise ten pages for a university course site. Place every card, then compare."),
+      p(tr("Challenge · Organise ten pages for a university course site. Place every card, then compare.", "Reto · Organiza diez páginas del sitio web de una asignatura. Coloca todas las tarjetas y después compara.")),
       layout_columns(col_widths = c(5, 7),
         div(
-          selectInput(ns("card"), "Content card", ia_cards),
-          selectizeInput(ns("category"), "Category label", choices = NULL,
-                         options = list(create = TRUE, placeholder = "Type a new label or choose one")),
-          actionButton(ns("place"), "Place card", class = "btn-primary w-100 mb-3"),
-          div(class = "panel-soft", span(class = "eyebrow", "NOT YET PLACED"), uiOutput(ns("unsorted")))),
+          selectInput(ns("card"), tr("Content card", "Tarjeta de contenido"), ia_cards),
+          selectizeInput(ns("category"), tr("Category label", "Etiqueta de categoría"), choices = NULL,
+                         options = list(create = TRUE, placeholder = tr("Type a new label or choose one", "Escribe una etiqueta nueva o elige una"))),
+          actionButton(ns("place"), tr("Place card", "Colocar tarjeta"), class = "btn-primary w-100 mb-3"),
+          div(class = "panel-soft", span(class = "eyebrow", tr("NOT YET PLACED", "SIN COLOCAR")), uiOutput(ns("unsorted")))),
         div(
-          h4("Your draft sitemap"),
+          h4(tr("Your draft sitemap", "Tu borrador de mapa del sitio")),
           uiOutput(ns("map")),
           div(class = "d-flex flex-wrap gap-2 mt-3",
-            actionButton(ns("compare"), "Compare with a reference", class = "btn-outline-success"),
-            actionButton(ns("reset"), "Reset activity", class = "btn-outline-secondary")),
-          uiOutput(ns("comparison")))))
-    ,
-    reflection = "Would a first-time student predict these labels? Which card could fit in more than one place?")
+            actionButton(ns("compare"), tr("Compare with a reference", "Comparar con una referencia"), class = "btn-outline-success"),
+            actionButton(ns("reset"), tr("Reset activity", "Reiniciar actividad"), class = "btn-outline-secondary")),
+          uiOutput(ns("comparison"))))),
+    reflection = tr("Would a first-time student predict these labels? Which card could fit in more than one place?",
+                    "¿Adivinaría estas etiquetas un estudiante que entra por primera vez? ¿Qué tarjeta podría encajar en más de un sitio?"))
 }
 
 information_architecture_server <- function(id) {
@@ -50,7 +51,7 @@ information_architecture_server <- function(id) {
 
     observeEvent(input$place, {
       label <- trimws(input$category %||% "")
-      if (!nzchar(label)) return(showNotification("Type or choose a category label first.", type = "warning"))
+      if (!nzchar(label)) return(showNotification(tr("Type or choose a category label first.", "Primero escribe o elige una etiqueta de categoría."), type = "warning"))
       x <- placed()
       x <- rbind(x[x$card != input$card, ], data.frame(card = input$card, category = label))
       placed(x)
@@ -66,38 +67,39 @@ information_architecture_server <- function(id) {
 
     output$unsorted <- renderUI({
       left <- remaining()
-      if (!length(left)) return(p(class = "footnote mb-0", "All cards placed. Compare your sitemap with the reference."))
+      if (!length(left)) return(p(class = "footnote mb-0", tr("All cards placed. Compare your sitemap with the reference.", "Todas las tarjetas colocadas. Compara tu mapa con la referencia.")))
       tags$ul(class = "footnote mb-0", lapply(left, tags$li))
     })
 
     output$map <- renderUI({
       x <- placed()
-      if (!nrow(x)) return(p(class = "muted", "Choose a card, give it a category label, and place it."))
+      if (!nrow(x)) return(p(class = "muted", tr("Choose a card, give it a category label, and place it.", "Elige una tarjeta, ponle una etiqueta de categoría y colócala.")))
       groups <- split(x$card, x$category)
       layout_column_wrap(width = "200px", gap = ".8rem",
         !!!lapply(names(groups), function(g) div(class = "panel-soft",
           tags$strong(g),
           tags$ul(class = "mb-0 mt-1", lapply(groups[[g]], function(card) tags$li(card, " ",
-            tags$a(href = "#", class = "footnote", `aria-label` = paste("Remove", card), onclick = js_event(session$ns("unplace"), sprintf("'%s'", card)), "×")))))))
+            tags$a(href = "#", class = "footnote", `aria-label` = paste(tr("Remove", "Quitar"), card), onclick = js_event(session$ns("unplace"), sprintf("'%s'", card)), "×")))))))
     })
 
     output$comparison <- renderUI({
       req(compared())
-      if (length(remaining())) return(div(class = "alert alert-warning mt-3", "Place all ten cards before comparing."))
+      if (length(remaining())) return(div(class = "alert alert-warning mt-3", tr("Place all ten cards before comparing.", "Coloca las diez tarjetas antes de comparar.")))
       result <- ia_agreement(placed())
       ref <- tags$ul(lapply(names(ia_reference), function(g) tags$li(tags$strong(g), ": ", paste(ia_reference[[g]], collapse = ", "))))
       div(class = "alert alert-success mt-3",
-        tags$strong(sprintf("%d%% of the reference groupings also appear in your sitemap.", round(100 * result$share))),
-        p(class = "mt-2 mb-1", "One reference structure, not the correct answer:"), ref,
-        if (nrow(result$missed)) p(class = "mb-0", "Pairs you placed apart: ", paste(apply(result$missed, 1, paste, collapse = " + "), collapse = "; "), ". Was that a deliberate choice?"))
+        tags$strong(sprintf(tr("%d%% of the reference groupings also appear in your sitemap.", "El %d%% de las agrupaciones de referencia también aparecen en tu mapa."), round(100 * result$share))),
+        p(class = "mt-2 mb-1", tr("One reference structure, not the correct answer:", "Una estructura de referencia, no la respuesta correcta:")), ref,
+        if (nrow(result$missed)) p(class = "mb-0", tr("Pairs you placed apart: ", "Parejas que separaste: "), paste(apply(result$missed, 1, paste, collapse = " + "), collapse = "; "),
+                                   tr(". Was that a deliberate choice?", ". ¿Fue una decisión deliberada?")))
     })
 
-    output$export_notes <- notes_handler("Information architecture", input, function() {
+    output$export_notes <- notes_handler(tr("Information architecture", "Arquitectura de la información"), input, function() {
       x <- placed()
-      if (!nrow(x)) return("(no cards placed)")
+      if (!nrow(x)) return(tr("(no cards placed)", "(sin tarjetas colocadas)"))
       groups <- split(x$card, x$category)
       c(vapply(names(groups), function(g) paste0(g, ": ", paste(groups[[g]], collapse = ", ")), ""),
-        if (!length(remaining())) sprintf("Agreement with reference: %d%%", round(100 * ia_agreement(x)$share)))
+        if (!length(remaining())) sprintf(tr("Agreement with reference: %d%%", "Coincidencia con la referencia: %d%%"), round(100 * ia_agreement(x)$share)))
     })
   })
 }

@@ -2,7 +2,7 @@
 
 **An AI-Powered Learning and Experimentation Environment for Interaction Design**
 
-**Use it online: <https://pablosancheznunez.com/ixd-lab/>**
+**Use it online: <https://pablosancheznunez.com/ixd-lab/> · En español: <https://pablosancheznunez.com/ixd-lab/es/>**
 
 IxD Lab is an open, modular learning studio built with R Shiny. It is an open educational resource (OER): free to use, adapt, and share. AI-supported activities and an opt-in research mode for collecting interaction data are in development (see [ROADMAP.md](ROADMAP.md)). Version 0.1.0 includes six complete labs. It does not yet use an AI provider, create accounts, or collect participant data. Simulated content is labelled as such, and activities are formative examples, not validated assessment instruments.
 
@@ -21,7 +21,9 @@ All labs include learning objectives, a key idea, an experiment, and a reflectio
 
 ## How it runs
 
-The app runs entirely in the visitor's browser with [Shinylive](https://posit-dev.github.io/r-shinylive/) (R compiled to WebAssembly), so it needs no R server. To publish a new version, run `source("publish.R")` from the project directory: it builds the static site and pushes it to the `gh-pages` branch, which GitHub Pages serves at <https://pablosancheznunez.com/ixd-lab/>. No external fonts, trackers, or third-party services are loaded.
+The app runs entirely in the visitor's browser with [Shinylive](https://posit-dev.github.io/r-shinylive/) (R compiled to WebAssembly), so it needs no R server. The interface is available in English and Spanish: every text is written once with `tr("English", "Español")`, and the language is chosen when the site is built. To run the Spanish version locally, create a file `lang.txt` containing `es` in the project directory.
+
+To publish a new version, run `source("publish.R")` from the project directory: it builds both languages, adds the loading message and sharing preview, and pushes the static site to the `gh-pages` branch, which GitHub Pages serves at <https://pablosancheznunez.com/ixd-lab/>. Set the environment variable `IXD_DRY_RUN=1` to build without publishing. No external fonts, trackers, or third-party services are loaded.
 
 ## Run locally
 
@@ -46,6 +48,7 @@ ixd-lab/
 ├── content/                  # Teaching notes for each activity
 ├── tests/smoke.R             # Basic checks
 ├── publish.R                 # Build with Shinylive and publish to GitHub Pages
+├── site/og-image.png         # Sharing preview image
 ├── ixd-lab.Rproj             # RStudio project
 ├── CITATION.cff              # How to cite
 ├── LICENSE                   # MIT (software)

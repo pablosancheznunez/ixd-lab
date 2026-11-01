@@ -6,7 +6,7 @@ IxD Lab aims to be an AI-powered learning and experimentation environment for in
 
 - Shared editorial identity, navigation, and modular structure for all six labs.
 - A complete, class-ready activity per lab with formative feedback and downloadable notes.
-- Runs in the browser with Shinylive, published on GitHub Pages and embedded in pablosancheznunez.com.
+- Runs in the browser with Shinylive, published on GitHub Pages at pablosancheznunez.com/ixd-lab, in English and Spanish.
 - No accounts, telemetry, AI provider, or participant data collection yet.
 
 ## 0.2 · Teaching-ready foundations

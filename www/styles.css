@@ -106,3 +106,7 @@ a { color: var(--ixd-green); }
   .experiment { padding: 1.1rem; }
   .trace-row { grid-template-columns: 6.5rem 1fr 3rem; font-size: .85rem; }
 }
+
+/* Language switch */
+.lang-switch { font: 500 .8rem var(--ixd-mono); letter-spacing: .08em; border: 1px solid var(--ixd-line); border-radius: 99px; padding: .2rem .7rem !important; margin: .4rem 0; }
+.lang-switch:hover { border-color: var(--ixd-green); color: var(--ixd-green); }
