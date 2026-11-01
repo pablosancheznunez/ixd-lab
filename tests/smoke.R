@@ -1,0 +1,8 @@
+root <- normalizePath(getwd(), winslash = "/", mustWork = TRUE)
+required <- c("app.R", "R/helpers.R", "R/labs/mod_wireframing.R", "R/labs/mod_information_architecture.R", "R/labs/mod_usability.R", "R/labs/mod_accessibility.R", "R/labs/mod_interaction_patterns.R", "R/labs/mod_user_behaviour.R", "README.md", "LICENSE", "ROADMAP.md", "RESEARCH_ETHICS.md")
+stopifnot(all(file.exists(file.path(root, required))))
+for (f in list.files(file.path(root, "R"), pattern = "\\.R$", recursive = TRUE, full.names = TRUE)) parse(f)
+invisible(parse(file.path(root, "app.R")))
+source(file.path(root, "R/labs/mod_accessibility.R"))
+stopifnot(abs(contrast_ratio("#000000", "#FFFFFF") - 21) < 0.01)
+cat("IxD Lab smoke checks passed.\n")
