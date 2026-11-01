@@ -118,3 +118,7 @@ body.ai-on .ai-dot { background: var(--ixd-green); }
 body.ai-on .ai-off-text, body:not(.ai-on) .ai-on-text { display: none; }
 .ai-feedback { background: #f1f6f3; border-left: 3px solid var(--ixd-green); border-radius: .6rem; padding: 1rem 1.2rem; }
 .ai-feedback li { margin-bottom: .35rem; }
+
+/* Examples, progress and portfolio */
+.example-link { font-weight: 500; }
+.portfolio-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; border-top: 1px solid var(--ixd-line); margin-top: 1.2rem; padding-top: 1.2rem; }

@@ -15,7 +15,11 @@ lab_section <- function(ns, objectives, concept, activity, reflection) {
       layout_columns(col_widths = c(6, 6),
         div(h3(tr("What you will practise", "Qué vas a practicar")), tags$ul(lapply(objectives, tags$li))),
         div(class = "concept", h3(tr("Key idea", "Idea clave")), p(concept)))),
-    div(class = "experiment mb-4", span(class = "eyebrow", tr("EXPERIMENT", "EXPERIMENTA")), activity),
+    div(class = "experiment mb-4",
+      div(class = "d-flex flex-wrap justify-content-between align-items-baseline gap-2",
+        span(class = "eyebrow", tr("EXPERIMENT", "EXPERIMENTA")),
+        actionLink(ns("example"), tr("Load an example", "Cargar un ejemplo"), class = "example-link footnote")),
+      activity),
     div(class = "experiment",
       span(class = "eyebrow", tr("REFLECT", "REFLEXIONA")),
       h3(reflection),
@@ -58,6 +62,7 @@ ai_error_text <- function(code, detail = NULL) {
 
 # Server side of the Reflect section: notes download plus optional AI feedback.
 # The request itself runs in the browser (www/ai.js) with the visitor's own key.
+# Returns what the app needs for progress and the combined portfolio.
 reflect_server <- function(lab, input, output, session, summary = function() character()) {
   output$export_notes <- notes_handler(lab, input, summary)
   state <- reactiveVal(list(status = "idle"))
@@ -95,6 +100,13 @@ reflect_server <- function(lab, input, output, session, summary = function() cha
                                         "Sugerencias formativas de un modelo de IA. Pueden equivocarse: compáralas con lo que observaste y decide tú.")))
       })
   })
+  list(
+    lab = lab,
+    started = reactive(nzchar(trimws(input$reflection %||% ""))),
+    lines = function() {
+      reflection <- trimws(input$reflection %||% "")
+      c(summary(), "", paste0(tr("Reflection: ", "Reflexión: "), if (nzchar(reflection)) reflection else tr("(empty)", "(vacío)")))
+    })
 }
 
 # Settings dialog for the optional AI feedback. The key field has no id, so Shiny never reads it.
@@ -146,3 +158,6 @@ notes_handler <- function(lab, input, summary = function() character()) {
 js_event <- function(input_id, value) {
   sprintf("Shiny.setInputValue('%s', %s, {priority: 'event'}); return false;", input_id, value)
 }
+
+# Fills the reflection with a worked example, used by each lab's "Load an example" link.
+example_reflection <- function(session, text) updateTextAreaInput(session, "reflection", value = text)

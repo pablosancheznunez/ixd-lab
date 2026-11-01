@@ -94,6 +94,16 @@ information_architecture_server <- function(id) {
                                    tr(". Was that a deliberate choice?", ". ¿Fue una decisión deliberada?")))
     })
 
+    observeEvent(input$example, {
+      labels <- c(tr("Study", "Estudiar"), tr("Assessment", "Evaluación"), tr("Help", "Ayuda"))
+      placed(data.frame(card = ia_cards, category = labels[c(1, 1, 1, 2, 2, 2, 3, 3, 3, 3)]))
+      updateSelectizeInput(session, "category", choices = labels)
+      compared(TRUE)
+      example_reflection(session, tr(
+        "I grouped the class forum with Help because students use it to ask questions. The reference puts it under Community: a quick card sort with students would show which label they expect.",
+        "Puse el foro con Ayuda porque el alumnado lo usa para preguntar. La referencia lo pone en Comunidad: una ordenación de tarjetas rápida con estudiantes mostraría qué etiqueta esperan."))
+    })
+
     reflect_server(tr("Information architecture", "Arquitectura de la información"), input, output, session, function() {
       x <- placed()
       if (!nrow(x)) return(tr("(no cards placed)", "(sin tarjetas colocadas)"))

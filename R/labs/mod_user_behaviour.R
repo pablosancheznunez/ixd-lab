@@ -83,6 +83,20 @@ user_behaviour_server <- function(id) {
       div(class = "alert alert-info mt-2", tags$ul(class = "mb-0", lapply(notes, tags$li)))
     })
 
+    observeEvent(input$example, {
+      updateRadioButtons(session, "scenario", selected = "registration")
+      updateTextAreaInput(session, "observation", value = tr(
+        "The person opened the payment help after 11 seconds on the form, then spent 31 seconds on the form before confirming.",
+        "La persona abrió la ayuda de pago tras 11 segundos en el formulario y luego pasó 31 segundos en él antes de confirmar."))
+      updateTextAreaInput(session, "explanation", value = tr(
+        "The payment options may be unclear; or the person was looking for a discount; or they paused to find their card.",
+        "Las opciones de pago pueden no estar claras; o buscaba un descuento; o se detuvo a buscar la tarjeta."))
+      updateCheckboxGroupInput(session, "methods", selected = methods_choices[c(1, 2)])
+      example_reflection(session, tr(
+        "The trace shows where time went, not why. A think-aloud test with consent would tell me whether the payment step confused people.",
+        "El recorrido muestra dónde se fue el tiempo, no por qué. Un test de pensamiento en voz alta con consentimiento me diría si el paso de pago confundió a la gente."))
+    })
+
     reflect_server(tr("User behaviour", "Comportamiento del usuario"), input, output, session, function() c(
       paste(tr("Scenario (simulated):", "Escenario (simulado):"), behaviour_traces[[input$scenario]]$title),
       paste(tr("Observation:", "Observación:"), trimws(input$observation %||% "")),

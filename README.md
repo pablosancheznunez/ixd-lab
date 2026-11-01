@@ -19,7 +19,7 @@ IxD Lab is an open, modular learning studio built with R Shiny. It is an open ed
 | Interaction patterns | Save, delete-with-undo and validation patterns, plus a pattern-choice exercise | Ready for class |
 | User behaviour | Three simulated traces on a timeline, observation vs explanation, research methods | Ready for class; not human data |
 
-All labs include learning objectives, a key idea, an experiment, and a reflection with downloadable notes. There are no user accounts, cookies, analytics, or data collection.
+All labs include learning objectives, a key idea, an experiment with a **Load an example** shortcut, and a reflection with downloadable notes. The home page shows which labs have notes and offers **Download all my notes** as one learning portfolio. To present IxD Lab at a conference or workshop, see [DEMO.md](DEMO.md). There are no user accounts, cookies, analytics, or data collection.
 
 ## AI feedback (optional)
 
@@ -64,6 +64,7 @@ ixd-lab/
 ├── CITATION.cff              # How to cite
 ├── LICENSE                   # MIT (software)
 ├── LICENSE-CONTENT.md        # CC BY 4.0 (educational content)
+├── DEMO.md                   # Presenter guide for conferences and workshops
 ├── README.md
 ├── ROADMAP.md
 ├── RESEARCH_ETHICS.md

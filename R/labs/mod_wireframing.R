@@ -109,6 +109,14 @@ wireframing_server <- function(id) {
     }
     output$export <- downloadHandler(filename = function() "ixd-wireframe.txt",
       content = function(file) writeLines(enc2utf8(c(tr("IxD Lab · Wireframing sketch", "IxD Lab · Boceto de wireframing"), "", sketch_lines())), file, useBytes = TRUE))
+    observeEvent(input$example, {
+      items(wire_templates[[1]])
+      updateRadioButtons(session, "screen", selected = "mobile")
+      example_reflection(session, tr(
+        "The search field and the course cards make the next step clear. On mobile the page gets long: I would drop the body text and test whether students still find a course.",
+        "El campo de búsqueda y las tarjetas de cursos dejan claro el siguiente paso. En móvil la página se alarga: quitaría el texto y probaría si los estudiantes siguen encontrando un curso."))
+    })
+
     reflect_server("Wireframing", input, output, session, sketch_lines)
   })
 }

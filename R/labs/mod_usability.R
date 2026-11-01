@@ -116,6 +116,20 @@ usability_server <- function(id) {
     }
     output$export <- downloadHandler(filename = function() "ixd-usability-findings.txt",
       content = function(file) writeLines(enc2utf8(c(tr("IxD Lab · Heuristic evaluation findings", "IxD Lab · Hallazgos de la evaluación heurística"), format(Sys.Date()), "", report())), file, useBytes = TRUE))
+    observeEvent(input$example, {
+      findings(data.frame(
+        interface = c(usability_scenarios$booking$title, usability_scenarios$search$title),
+        heuristic = heuristics[c(1, 2)], severity = c(3L, 2L),
+        issue = c(tr("After booking, the form clears with no message, so people do not know whether the room is booked and may book twice.",
+                     "Tras reservar, el formulario se vacía sin mensaje, así que la gente no sabe si la sala está reservada y puede reservar dos veces."),
+                  tr("The empty search result uses system jargon and offers no way forward.", "El resultado vacío usa jerga técnica y no ofrece cómo seguir.")),
+        fix = c(tr("Show a confirmation with the room, date and a link to cancel.", "Mostrar una confirmación con la sala, la fecha y un enlace para cancelar."),
+                tr("Explain that nothing matched and suggest related courses.", "Explicar que no hay coincidencias y sugerir cursos relacionados."))))
+      example_reflection(session, tr(
+        "The booking problem is observable: the form clears and nothing appears. That people book twice is my interpretation; I would check it with a quick usability test.",
+        "El problema de la reserva es observable: el formulario se vacía y no aparece nada. Que la gente reserve dos veces es mi interpretación; lo comprobaría con un test de usabilidad rápido."))
+    })
+
     reflect_server(tr("Usability", "Usabilidad"), input, output, session, report)
   })
 }

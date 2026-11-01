@@ -91,7 +91,8 @@ home_page <- div(class = "container",
     lapply(names(labs), function(id) {
       lab <- labs[[id]]
       goto_link(id, class = "lab-card",
-        span(class = "lab-num", paste("LAB", lab$number)), h3(lab$title), p(lab$desc), span(class = "go", tr("Open lab →", "Abrir lab →")))
+        span(class = "lab-num", paste("LAB", lab$number)), h3(lab$title), p(lab$desc),
+        div(class = "d-flex justify-content-between align-items-center", span(class = "go", tr("Open lab →", "Abrir lab →")), uiOutput(paste0("status_", id), inline = TRUE)))
     })),
   div(class = "teacher-box",
     span(class = "eyebrow", tr("FOR TEACHERS", "PARA DOCENTES")),
@@ -101,7 +102,10 @@ home_page <- div(class = "container",
            "Cada lab funciona como una actividad de taller de 15 minutos. Pide al alumnado que lleve tres columnas en sus notas: qué cambié, qué esperaba y qué necesitaría comprobar. Al final de cada lab pueden descargar sus notas para compartirlas o entregarlas.")),
       p(tr("Feedback in the labs is formative, not a grade. Optional AI feedback works with your own Anthropic API key (✦ AI in the menu); without it, nothing learners write leaves their browser. An opt-in research mode is in development; see the ",
            "El feedback de los labs es formativo, no una nota. El feedback con IA es opcional y funciona con tu propia clave de API de Anthropic (✦ IA en el menú); sin ella, nada de lo que escribe el alumnado sale de su navegador. Un modo de investigación voluntario está en desarrollo; consulta la "),
-        ext_link(paste0(repo_url, "/blob/main/ROADMAP.md"), tr("roadmap", "hoja de ruta")), ".")))
+        ext_link(paste0(repo_url, "/blob/main/ROADMAP.md"), tr("roadmap", "hoja de ruta")), ".")),
+    div(class = "portfolio-row",
+      uiOutput("progress", inline = TRUE),
+      downloadButton("portfolio", tr("Download all my notes", "Descargar todas mis notas"), class = "btn-outline-success")))
 )
 
 about_page <- div(class = "container hero",
@@ -176,7 +180,27 @@ ui <- tagAppendAttributes(ui, .cssSelector = ".tab-content", id = "main", tabind
 
 server <- function(input, output, session) {
   observeEvent(input$goto, nav_select("main_nav", input$goto))
-  for (lab in labs) lab$server(lab$ns)
+  results <- lapply(labs, function(lab) lab$server(lab$ns))
+
+  for (id in names(labs)) local({
+    lab_id <- id
+    output[[paste0("status_", lab_id)]] <- renderUI(
+      if (results[[lab_id]]$started()) span(class = "chip", tr("✓ Notes", "✓ Notas")))
+  })
+  output$progress <- renderUI({
+    done <- sum(vapply(results, function(r) r$started(), TRUE))
+    span(class = "muted", sprintf(tr("%d of %d labs with notes", "%d de %d labs con notas"), done, length(results)))
+  })
+
+  # One file with every lab's summary and reflection: a learning portfolio to keep or submit.
+  output$portfolio <- downloadHandler(
+    filename = function() "ixd-lab-portfolio.txt",
+    content = function(file) {
+      body <- unlist(lapply(names(labs), function(id) c(
+        paste0("## ", labs[[id]]$number, " · ", labs[[id]]$title), "", results[[id]]$lines(), "")))
+      writeLines(enc2utf8(c(tr("IxD Lab · Learning portfolio", "IxD Lab · Portafolio de aprendizaje"), format(Sys.Date()), "",
+                            "https://pablosancheznunez.com/ixd-lab/", "", body)), file, useBytes = TRUE)
+    })
 }
 
 shinyApp(ui, server)

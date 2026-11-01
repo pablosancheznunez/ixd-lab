@@ -115,6 +115,15 @@ interaction_patterns_server <- function(id) {
         tags$ul(class = "check-list", lapply(seq_along(pattern_quiz), function(i) tags$li(class = if (right[i]) "ok" else "todo", pattern_quiz[[i]]$why))))
     })
 
+    observeEvent(input$example, {
+      chosen <- c(q1 = "inline", q2 = "dialog", q3 = "dialog", q4 = "validation")
+      for (id in names(chosen)) updateSelectInput(session, id, selected = chosen[[id]])
+      checked(TRUE)
+      example_reflection(session, tr(
+        "I chose a dialog for archiving an email, but archiving is reversible, so Undo interrupts less. I keep confirmation dialogs for actions that cannot be undone.",
+        "Elegí un diálogo para archivar un correo, pero archivar es reversible, así que Deshacer interrumpe menos. Reservo los diálogos de confirmación para acciones que no se pueden deshacer."))
+    })
+
     reflect_server(tr("Interaction patterns", "Patrones de interacción"), input, output, session, function() {
       vapply(pattern_quiz, function(q) {
         chosen <- names(pattern_choices)[pattern_choices == (input[[q$id]] %||% "")]

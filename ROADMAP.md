@@ -5,7 +5,7 @@ IxD Lab aims to be an AI-powered learning and experimentation environment for in
 ## 0.1 · Learning prototype (this release)
 
 - Shared editorial identity, navigation, and modular structure for all six labs.
-- A complete, class-ready activity per lab with formative feedback and downloadable notes.
+- A complete, class-ready activity per lab with formative feedback, a worked example, downloadable notes, and a combined learning portfolio.
 - Runs in the browser with Shinylive, published on GitHub Pages at pablosancheznunez.com/ixd-lab, in English and Spanish.
 - Optional AI feedback in every lab with Claude and the visitor's own Anthropic API key, sent directly from the browser.
 - No accounts, telemetry, or participant data collection.

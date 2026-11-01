@@ -126,6 +126,17 @@ accessibility_server <- function(id) {
         tags$ul(class = "check-list", lapply(seq_along(barrier_items), function(i) tags$li(class = if (right[i]) "ok" else "todo", barrier_items[[i]]$why))))
     })
 
+    observeEvent(input$example, {
+      pair <- colour_presets[[1]]
+      updateTextInput(session, "fg", value = pair[1]); updateTextInput(session, "bg", value = pair[2])
+      for (item in barrier_items) updateSelectInput(session, paste0("barrier_", item$id), selected = item$answer)
+      updateSelectInput(session, "barrier_focus", selected = "colour")
+      checked(TRUE)
+      example_reflection(session, tr(
+        "Grey on white fails for normal text, and the suggested darker grey passes. Contrast alone would miss the missing labels and the invisible keyboard focus: I would also test with a keyboard and a screen reader.",
+        "El gris sobre blanco no llega para texto normal, y el gris más oscuro sugerido sí. El contraste por sí solo no detectaría las etiquetas que faltan ni el foco invisible: probaría también con teclado y lector de pantalla."))
+    })
+
     reflect_server(tr("Accessibility", "Accesibilidad"), input, output, session, function() {
       if (!valid()) return(tr("(no valid colour pair)", "(sin pareja de colores válida)"))
       sprintf(tr("Text %s on %s at %spt: contrast %s", "Texto %s sobre %s a %s pt: contraste %s"), toupper(input$fg), toupper(input$bg), input$size, fmt_ratio(ratio()))
