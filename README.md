@@ -1,8 +1,8 @@
 # IxD Lab
 
-**An AI-Enhanced Experimental Learning Environment for Interaction Design**
+**An AI-Powered Learning and Experimentation Environment for Interaction Design**
 
-IxD Lab is an open, modular learning studio built with R Shiny. This 0.1.0 prototype includes six visible labs and a working starter activity in each. It does not require an AI provider, create an account, or collect participant data. The user behaviour trace is explicitly synthetic. Activities are formative examples, not validated assessment instruments.
+IxD Lab is an open, modular learning studio built with R Shiny. AI-supported activities and an opt-in research mode for collecting interaction data are in development (see [ROADMAP.md](ROADMAP.md)). This 0.1.0 prototype includes six visible labs and a working starter activity in each. It does not yet require an AI provider, create an account, or collect participant data. The user behaviour trace is explicitly synthetic. Activities are formative examples, not validated assessment instruments.
 
 ## Run locally
 

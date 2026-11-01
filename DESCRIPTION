@@ -1,7 +1,7 @@
 Package: ixdLab
-Title: IxD Lab: An AI-Enhanced Experimental Learning Environment for Interaction Design
+Title: IxD Lab: An AI-Powered Learning and Experimentation Environment for Interaction Design
 Version: 0.1.0
-Authors@R: person("IxD Lab contributors", role = c("aut", "cre"), email = "maintainers@example.org")
+Authors@R: person("Pablo", "Sánchez-Núñez", role = c("aut", "cre"), email = "psancheznunez@outlook.com")
 Description: An open, modular Shiny learning environment for interaction design.
 License: MIT + file LICENSE
 Encoding: UTF-8
