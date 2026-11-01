@@ -1,10 +1,17 @@
 Package: ixdLab
 Title: IxD Lab: An AI-Powered Learning and Experimentation Environment for Interaction Design
 Version: 0.1.0
-Authors@R: person("Pablo", "Sánchez-Núñez", role = c("aut", "cre"), email = "psancheznunez@outlook.com")
+Authors@R:
+    person(
+      "Pablo", "Sánchez-Núñez",
+      email = "psancheznunez@outlook.com",
+      role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0001-7845-9506")
+    )
 Description: An AI-powered, modular Shiny environment for learning and experimenting
-    with interaction design, with a planned opt-in research mode.
-URL: https://github.com/pablosancheznunez/ixd-lab
+    with interaction design, with a planned opt-in research mode. Open
+    educational resource: code under MIT, educational content under CC BY 4.0.
+URL: https://pablosancheznunez.com/ixd-lab/, https://github.com/pablosancheznunez/ixd-lab
 BugReports: https://github.com/pablosancheznunez/ixd-lab/issues
 License: MIT + file LICENSE
 Encoding: UTF-8

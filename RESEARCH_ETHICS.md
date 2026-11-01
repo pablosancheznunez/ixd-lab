@@ -1,6 +1,6 @@
 # Proposed educational evaluation and ethical evidence plan
 
-IxD Lab will include an opt-in research mode that collects interaction data and AI-supported activities (see [ROADMAP.md](ROADMAP.md)). Version 0.1 collects no participant data. Research mode must remain off until its protocol, consent flow, governance, data protection assessment, and institutional review are in place.
+IxD Lab will include an opt-in research mode that collects interaction data and AI-supported activities (see [ROADMAP.md](ROADMAP.md)). Version 0.1 collects no participant data. Research mode must remain off until its protocol, consent flow, governance, and data protection assessment are in place.
 
 ## Questions and measures
 
@@ -12,12 +12,12 @@ Do not treat clicks, time-on-task, synthetic traces, or AI output as evidence of
 
 ## Consent and minimisation
 
-- Obtain instructor and institutional ethics approval as applicable before recruiting students or collecting study data.
+- IxD Lab is an independent project: the author is responsible for each study's protocol and data. If a study is run inside a course or published in a venue that requires ethics approval, obtain it there.
 - Explain purpose, procedures, risks, voluntary participation, withdrawal, access, retention, and contact details in accessible language before consent.
 - Provide an equivalent learning activity for non-participants. Participation must not affect grades or access to teaching.
 - Collect only fields needed for the declared question. Avoid names, email addresses, student numbers, IP addresses, and precise timestamps unless independently justified and approved.
 - Prefer anonymous task artifacts. If linkage is essential, store the key separately with restricted access and a deletion date.
-- Set retention and deletion dates before collection; limit access to the named research team and use institution-approved storage.
+- Set retention and deletion dates before collection; limit access to the named research team and use secure, EU-based storage.
 - Export only the current activity's necessary data. Show a preview and give a clear cancel path. No background telemetry.
 - Label simulated and AI-generated content in context. Do not combine it with participant data as if it were observed behaviour.
 
@@ -27,8 +27,8 @@ Do not treat clicks, time-on-task, synthetic traces, or AI output as evidence of
 - Send only the text needed for the feedback. Never send names, email addresses, student numbers, or research identifiers.
 - Check the provider's data retention and training terms, and prefer settings or agreements that exclude training on learner data.
 - Keep an equivalent non-AI path for every activity, so learners who decline still get the full learning experience.
-- Data collection in the EU is subject to the GDPR. Consult the university's Data Protection Officer and ethics committee before any study, and document the legal basis, retention period, and data flows.
+- Data collection in the EU is subject to the GDPR, whoever runs the study. As data controller, document the legal basis (informed consent), purpose, retention period, data flows, and how people exercise their rights, in a privacy notice shown before consent.
 
 ## Reporting
 
-Predefine questions and analysis. Report recruitment, exclusions, missingness, instrument limitations, and deviations. Do not claim causal learning gains from an uncontrolled classroom exercise. Publish only appropriately anonymised or aggregated material under the consent and institutional rules; provide a contact and correction route.
+Predefine questions and analysis. Report recruitment, exclusions, missingness, instrument limitations, and deviations. Do not claim causal learning gains from an uncontrolled classroom exercise. Publish only appropriately anonymised or aggregated material within what participants consented to; provide a contact and correction route.
