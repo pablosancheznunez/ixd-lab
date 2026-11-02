@@ -11,13 +11,13 @@ source("tests/smoke.R")     # files, parsing and the formulas behind the labs
 
 `publish.R` builds the browser version with Shinylive and publishes it.
 
-## Changes that may be made without the maintainer's review
+## Small changes (welcome as pull requests)
 
 - The README, the demo guide, the roadmap, the site files and styles.
 
-## Changes that always need the maintainer's review
+## Changes to discuss in an issue first
 
 - `R/` (labs, formulas and content), `content/`, `RESEARCH_ETHICS.md` and `tests/`.
-- Workflows, `.maintenance.json`, `CODEOWNERS` and this file.
+- Workflows and this file.
 
 Tests are never weakened or deleted to make them pass. Educational content is licensed CC BY 4.0 and code MIT.

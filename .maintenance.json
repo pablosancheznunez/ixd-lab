@@ -1,7 +1,1 @@
-{
-  "risk_paths": {
-    "high": ["R/**", "content/**", "RESEARCH_ETHICS.md", "LICENSE*", "tests/**"],
-    "low": ["README.md", "DEMO.md", "ROADMAP.md", "site/**", "www/styles.css"]
-  },
-  "release": { "version_files": ["CITATION.cff", "DESCRIPTION"] }
-}
+{ "release": { "version_files": ["CITATION.cff", "DESCRIPTION"] } }

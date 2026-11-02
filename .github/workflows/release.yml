@@ -1,0 +1,19 @@
+# Monthly release: if main changed and the tests pass, a patch version is
+# tagged and published, and Zenodo mints its DOI. See
+# pablosancheznunez/research-tools-ops.
+name: Release
+
+on:
+  schedule:
+    - cron: "0 7 1 * *"
+  workflow_dispatch:
+
+jobs:
+  release:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    uses: pablosancheznunez/research-tools-ops/.github/workflows/auto-release.yml@main
+    with:
+      setup: sudo apt-get install -y -qq r-base-core >/dev/null && sudo Rscript -e 'install.packages(c("shiny","bslib"), repos="https://cloud.r-project.org", quiet=TRUE)'
+      test: Rscript tests/smoke.R
+    permissions:
+      contents: write
