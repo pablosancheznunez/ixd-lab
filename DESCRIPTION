@@ -1,6 +1,6 @@
 Package: ixdLab
 Title: IxD Lab: An AI-Powered Learning and Experimentation Environment for Interaction Design
-Version: 0.1.0
+Version: 0.2.0
 Authors@R:
     person(
       "Pablo", "Sánchez-Núñez",

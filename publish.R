@@ -10,17 +10,17 @@ unlink(site_dir, recursive = TRUE)
 pages <- list(
   en = list(subdir = "", url = base_url,
             title = "IxD Lab · Interaction design studio",
-            desc = "Six hands-on labs for learning interaction design: wireframing, information architecture, usability, accessibility, interaction patterns and user behaviour. Open educational resource.",
+            desc = "Fifteen hands-on labs for learning UX and interaction design: research methods, interviews, personas, journey maps, information architecture, wireframing, UX writing, laws of UX, usability testing, accessibility, A/B testing and ethics. Open educational resource.",
             tagline = "An AI-powered learning and experimentation environment for interaction design",
-            intro = "Learn by making, testing and reflecting: six hands-on labs that run in your browser, with no account. Optional AI feedback from Claude. Open educational resource by Pablo Sánchez-Núñez.",
-            labs = c("Wireframing", "Information architecture", "Usability", "Accessibility", "Interaction patterns", "User behaviour"),
+            intro = "Learn UX by doing it: fifteen hands-on labs that run in your browser, with no account. Optional AI feedback and tutor with Claude, ChatGPT or Gemini. Open educational resource by Pablo Sánchez-Núñez.",
+            labs = c("Research methods", "Interviews and surveys", "Personas", "Journey mapping", "Information architecture", "Wireframing", "Interaction patterns", "UX writing", "Laws of UX", "Heuristic evaluation", "Usability testing and metrics", "Accessibility", "Behaviour analytics", "A/B testing", "Ethics and dark patterns"),
             loading = "Loading the labs… The first visit takes about 20 seconds."),
   es = list(subdir = "es", url = paste0(base_url, "es/"),
             title = "IxD Lab · Estudio de diseño de interacción",
-            desc = "Seis labs prácticos para aprender diseño de interacción: wireframing, arquitectura de la información, usabilidad, accesibilidad, patrones de interacción y comportamiento del usuario. Recurso educativo abierto.",
+            desc = "Quince labs prácticos para aprender UX y diseño de interacción: métodos de investigación, entrevistas, personas, mapas de recorrido, arquitectura de la información, wireframing, escritura UX, leyes de la UX, tests de usabilidad, accesibilidad, tests A/B y ética. Recurso educativo abierto.",
             tagline = "Un entorno de aprendizaje y experimentación con IA para el diseño de interacción",
-            intro = "Aprende haciendo, probando y reflexionando: seis labs prácticos que funcionan en tu navegador, sin registro. Feedback opcional con la IA Claude. Recurso educativo abierto de Pablo Sánchez-Núñez.",
-            labs = c("Wireframing", "Arquitectura de la información", "Usabilidad", "Accesibilidad", "Patrones de interacción", "Comportamiento del usuario"),
+            intro = "Aprende UX haciéndola: quince labs prácticos que funcionan en tu navegador, sin registro. Feedback y tutor opcionales con Claude, ChatGPT o Gemini. Recurso educativo abierto de Pablo Sánchez-Núñez.",
+            labs = c("Métodos de investigación", "Entrevistas y encuestas", "Personas", "Mapas de recorrido", "Arquitectura de la información", "Wireframing", "Patrones de interacción", "Escritura UX", "Leyes de la UX", "Evaluación heurística", "Tests de usabilidad y métricas", "Accesibilidad", "Analítica del comportamiento", "Tests A/B", "Ética y patrones oscuros"),
             loading = "Cargando los labs… La primera visita tarda unos 20 segundos.")
 )
 

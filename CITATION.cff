@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use IxD Lab in teaching or research, please cite it as below."
 type: software
 title: "IxD Lab: An AI-Powered Learning and Experimentation Environment for Interaction Design"
-version: 0.1.0
-date-released: 2026-11-01
+version: 0.2.0
+date-released: 2026-11-02
 authors:
   - family-names: "Sánchez-Núñez"
     given-names: "Pablo"
@@ -22,9 +22,12 @@ identifiers:
     description: "Version 0.1.0"
 abstract: >-
   IxD Lab is an open educational resource for learning interaction design by
-  making, testing, and reflecting. Six browser-based labs cover wireframing,
-  information architecture, usability, accessibility, interaction patterns,
-  and user behaviour. The software is released under the MIT License and the
+  making, testing, and reflecting. Fifteen browser-based labs in three modules
+  (Discover, Design, Evaluate) cover research methods, interviews, personas,
+  journey mapping, information architecture, wireframing, interaction patterns,
+  UX writing, laws of UX, heuristic evaluation, usability testing and metrics,
+  accessibility, behaviour analytics, A/B testing, and ethics. Each lab has
+  explanations, a quiz, and optional AI feedback and tutoring. The software is released under the MIT License and the
   educational content under CC BY 4.0.
 keywords:
   - interaction design

@@ -6,35 +6,55 @@
 
 **Use it online: <https://pablosancheznunez.com/ixd-lab/> · En español: <https://pablosancheznunez.com/ixd-lab/es/>**
 
-IxD Lab is an open, modular learning studio built with R Shiny. It is an open educational resource (OER): free to use, adapt, and share. Every lab offers optional AI feedback from Claude, using your own Anthropic API key; an opt-in research mode for collecting interaction data is in development (see [ROADMAP.md](ROADMAP.md)). IxD Lab does not create accounts or collect participant data. Simulated content is labelled as such, and activities are formative examples, not validated assessment instruments.
+IxD Lab is an open, modular learning studio built with R Shiny, designed for university courses in interaction design and user experience (for example, a master's in UX). It is an open educational resource (OER): free to use, adapt, and share. Every lab offers optional AI feedback and an AI tutor with Claude, ChatGPT or Gemini, using your own API key; an opt-in research mode for collecting interaction data is in development (see [ROADMAP.md](ROADMAP.md)). IxD Lab does not create accounts or collect participant data. Simulated content is labelled as such, and activities are formative examples, not validated assessment instruments.
 
 ## Labs
 
-| Lab | Activity | Status |
+Fifteen labs in three modules that follow a UX process.
+
+| # | Lab | Activity |
 | --- | --- | --- |
-| Wireframing | Build from components or templates, reorder, test three widths, live design checks, export | Ready for class |
-| Information architecture | Card sort of ten pages, editable labels, comparison with a reference structure | Ready for class |
-| Usability | Heuristic evaluation of three interfaces with severity ratings and a findings report | Ready for class |
-| Accessibility | WCAG contrast checker with a suggested passing colour, plus a spot-the-barrier exercise | Ready for class; not a complete audit |
-| Interaction patterns | Save, delete-with-undo and validation patterns, plus a pattern-choice exercise | Ready for class |
-| User behaviour | Three simulated traces on a timeline, observation vs explanation, research methods | Ready for class; not human data |
+| | **Discover** | |
+| 01 | Research methods | Match six research questions to methods on the attitudinal–behavioural / qualitative–quantitative landscape and build a research plan |
+| 02 | Interviews and surveys | Diagnose biased draft questions, rewrite them with live checks, and build an interview guide |
+| 03 | Personas | Tag twelve interview notes (affinity mapping) and build an evidence-based persona with checks |
+| 04 | Journey mapping | Map five stages with emotions, touchpoints, pain points and opportunities, drawn as an emotional curve |
+| | **Design** | |
+| 05 | Information architecture | Card sort of ten pages, editable labels, comparison with a reference structure |
+| 06 | Wireframing | Build from components or templates, reorder, test three widths, live design checks, export |
+| 07 | Interaction patterns | Save, delete-with-undo and validation patterns, plus a pattern-choice exercise |
+| 08 | UX writing | Rewrite five pieces of microcopy with readability (Flesch / Fernández-Huerta) and tone checks |
+| 09 | Laws of UX | Run Fitts's and Hick's law experiments in the browser and fit the models to your own data |
+| | **Evaluate** | |
+| 10 | Heuristic evaluation | Heuristic evaluation of three interfaces with severity ratings and a findings report |
+| 11 | Usability testing and metrics | SUS scoring, completion rates with adjusted Wald intervals, task times, and the problem-discovery curve |
+| 12 | Accessibility | WCAG contrast checker with a suggested passing colour, plus a spot-the-barrier exercise (not a complete audit) |
+| 13 | Behaviour analytics | Three simulated traces on a timeline, observation vs explanation, research methods (not human data) |
+| 14 | A/B testing | Sample-size planning, a simulated experiment with confidence intervals, and a simulation of the peeking problem |
+| 15 | Ethics and dark patterns | Audit six deceptive designs, rate their harm, and propose fair alternatives with EU legal references |
 
-All labs include learning objectives, a key idea, an experiment with a **Load an example** shortcut, and a reflection with downloadable notes. The home page shows which labs have notes and offers **Download all my notes** as one learning portfolio. To present IxD Lab at a conference or workshop, see [DEMO.md](DEMO.md). There are no user accounts, cookies, analytics, or data collection.
+Every lab has four parts: **Learn** (objectives, a key idea, and a *Go deeper* section with theory, common mistakes and references), **Experiment** (a hands-on task with a **Load an example** shortcut), **Check** (a three-question quiz with explained answers) and **Reflect** (notes, AI feedback and an AI tutor). Notes are saved in the browser's local storage on that device only, and the home page shows progress and offers **Download my portfolio**. A searchable glossary links each term to its lab. To present IxD Lab at a conference or workshop, see [DEMO.md](DEMO.md). There are no user accounts, cookies, analytics, or data collection.
 
-## AI feedback (optional)
+## AI feedback and tutor (optional)
 
-In every lab, **✦ Get AI feedback** asks Claude (Anthropic) for 3 to 5 formative points on the activity and the learner's reflection, in the interface language. To turn it on, open **✦ AI** in the menu and paste an Anthropic API key from <https://console.anthropic.com/settings/keys>; usage is billed to that key's account.
+In every lab, **✦ Get AI feedback** asks an AI model for 3 to 5 formative points on the activity and the learner's reflection, and **✦ Ask the AI tutor** answers questions about the lab's topic in a conversation, in the interface language. To turn it on, open **✦ AI** in the menu, choose a provider and paste your own API key; usage is billed to that account.
+
+| Provider | Default model | Get a key |
+| --- | --- | --- |
+| Claude (Anthropic) | `claude-opus-5-5` | <https://console.anthropic.com/settings/keys> |
+| ChatGPT (OpenAI) | `gpt-5` | <https://platform.openai.com/api-keys> |
+| Gemini (Google) | `gemini-flash-latest` | <https://aistudio.google.com/app/apikey> |
 
 - The key stays in the browser (session storage, or local storage if you tick "Remember on this device"). It is never sent to the Shiny server or to the author.
-- The request goes directly from the browser to the Claude API (`www/ai.js`, model `claude-opus-5-5`). Only the lab's activity summary and reflection are sent, and only when the learner asks.
-- Responses are labelled as AI-generated. Without a key, every lab works as before.
+- The request goes directly from the browser to the chosen provider (`www/ai.js`). Only the lab's activity summary, the reflection, or the tutor question are sent, and only when the learner asks. A different model can be set under *Advanced: model*, for example when a provider retires the default.
+- Responses are labelled as AI-generated with the provider's name. Without a key, every lab works as before.
 - Because the key is held by each user, this suits teachers, demos and self-study. For a whole class without individual keys, see version 0.3 in the roadmap.
 
 ## How it runs
 
 The app runs entirely in the visitor's browser with [Shinylive](https://posit-dev.github.io/r-shinylive/) (R compiled to WebAssembly), so it needs no R server. The interface is available in English and Spanish: every text is written once with `tr("English", "Español")`, and the language is chosen when the site is built. To run the Spanish version locally, create a file `lang.txt` containing `es` in the project directory.
 
-To publish a new version, run `source("publish.R")` from the project directory: it builds both languages, adds the loading message and sharing preview, and pushes the static site to the `gh-pages` branch, which GitHub Pages serves at <https://pablosancheznunez.com/ixd-lab/>. Set the environment variable `IXD_DRY_RUN=1` to build without publishing. No external fonts, trackers, or third-party services are loaded; the only outside call is to the Claude API, and only when a user turns on AI feedback with their own key.
+To publish a new version, run `source("publish.R")` from the project directory: it builds both languages, adds the loading message and sharing preview, and pushes the static site to the `gh-pages` branch, which GitHub Pages serves at <https://pablosancheznunez.com/ixd-lab/>. Set the environment variable `IXD_DRY_RUN=1` to build without publishing. No external fonts, trackers, or third-party services are loaded; the only outside calls go to the AI provider a user chooses (Anthropic, OpenAI or Google), and only when they ask with their own key.
 
 ## Run locally
 
@@ -93,7 +113,7 @@ IxD Lab is published as an open educational resource, in line with the [UNESCO R
 
 ## How to cite
 
-Sánchez-Núñez, P. (2026). *IxD Lab: An AI-Powered Learning and Experimentation Environment for Interaction Design* (Version 0.1.0) [Software and open educational resource]. Zenodo. https://doi.org/10.5281/zenodo.23863524
+Sánchez-Núñez, P. (2026). *IxD Lab: An AI-Powered Learning and Experimentation Environment for Interaction Design* (Version 0.2.0) [Software and open educational resource]. Zenodo. https://doi.org/10.5281/zenodo.23863524
 
 The DOI [10.5281/zenodo.23863524](https://doi.org/10.5281/zenodo.23863524) always points to the latest version; each release also has its own DOI on Zenodo. GitHub offers this citation, in APA and BibTeX, from **Cite this repository** ([CITATION.cff](CITATION.cff)).
 

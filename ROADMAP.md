@@ -2,7 +2,14 @@
 
 IxD Lab aims to be an AI-powered learning and experimentation environment for interaction design, with an opt-in research mode that collects interaction data ethically. Each stage below builds towards that goal.
 
-## 0.1 · Learning prototype (this release)
+## 0.2 · Fifteen labs and multi-provider AI (this release)
+
+- Nine new labs (research methods, interviews and surveys, personas, journey mapping, UX writing, laws of UX with in-browser Fitts and Hick experiments, usability testing and metrics, A/B testing, ethics and dark patterns), organised in three modules: Discover, Design, Evaluate.
+- Every lab: a Go deeper section with theory, common mistakes and references; a three-question quiz with explained answers; an AI tutor.
+- AI feedback and tutor with Claude, ChatGPT or Gemini, each with the visitor's own key.
+- Notes saved in the browser, progress on the home page, glossary.
+
+## 0.1 · Learning prototype
 
 - Shared editorial identity, navigation, and modular structure for all six labs.
 - A complete, class-ready activity per lab with formative feedback, a worked example, downloadable notes, and a combined learning portfolio.
