@@ -19,7 +19,7 @@ identifiers:
     description: "Concept DOI: all versions, resolves to the latest"
   - type: doi
     value: 10.5281/zenodo.23863525
-    description: "Version 0.1.0"
+    description: "First release"
 abstract: >-
   IxD Lab is an open educational resource for learning interaction design by
   making, testing, and reflecting. Fifteen browser-based labs in three modules

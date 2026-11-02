@@ -1,0 +1,8 @@
+# Paths that need the maintainer's approval (see .maintenance.json).
+/R/ @pablosancheznunez
+/content/ @pablosancheznunez
+/tests/ @pablosancheznunez
+/RESEARCH_ETHICS.md @pablosancheznunez
+/.github/ @pablosancheznunez
+/.maintenance.json @pablosancheznunez
+/CONTRIBUTING.md @pablosancheznunez
