@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 278" width="240" height="278" role="img" aria-label="IxD Lab logo">
+  <polygon points="120,4 236,71 236,207 120,274 4,207 4,71" fill="#a8327f" stroke="#7f2660" stroke-width="6"/>
+  <rect x="50" y="58" width="140" height="106" rx="8" fill="#ffffff" opacity=".96"/>
+  <rect x="50" y="58" width="140" height="18" rx="8" fill="#f1cfe5"/>
+  <circle cx="62" cy="67" r="3.5" fill="#a8327f"/>
+  <circle cx="74" cy="67" r="3.5" fill="#a8327f" opacity=".6"/>
+  <rect x="64" y="88" width="50" height="40" rx="4" fill="none" stroke="#a8327f" stroke-width="3" stroke-dasharray="5 4"/>
+  <rect x="124" y="90" width="52" height="6" rx="3" fill="#e3a9cf"/>
+  <rect x="124" y="104" width="40" height="6" rx="3" fill="#e3a9cf"/>
+  <rect x="124" y="136" width="40" height="14" rx="7" fill="#a8327f"/>
+  <path d="M156 138 l0 34 l9 -8 l7 15 l7 -3 l-7 -15 l12 -1 z" fill="#f6d365" stroke="#7f2660" stroke-width="3" stroke-linejoin="round"/>
+  <text x="120" y="226" text-anchor="middle" font-family="Georgia, serif" font-size="32" fill="#ffffff">IxD Lab</text>
+</svg>

@@ -1,4 +1,4 @@
-# IxD Lab
+# IxD Lab <img src="man/figures/logo.svg" align="right" height="139" alt="IxD Lab logo" />
 
 **An AI-Powered Learning and Experimentation Environment for Interaction Design**
 
